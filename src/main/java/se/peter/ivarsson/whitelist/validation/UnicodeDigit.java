@@ -15,7 +15,7 @@ import javax.validation.Payload;
 import se.peter.ivarsson.whitelist.check.CheckUnicodeDigitValidator;
 
 /**
- * Check string only has Unicode characters and whitespace
+ * Check string only has Unicode characters, whitespace and digits
  *
  * @author Peter Ivarsson Peter.Ivarsson@cybercom.com
  */
