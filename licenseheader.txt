@@ -1,0 +1,9 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}Whitelist validate input fields and parameters (Been Validaton)
+${licensePrefix}
+${licensePrefix}Copyright (C) 2018 Peter Ivarsson
+<#if licenseLast??>
+${licenseLast}
+</#if>
