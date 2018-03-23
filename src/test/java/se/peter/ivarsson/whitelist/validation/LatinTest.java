@@ -33,7 +33,7 @@ public class LatinTest {
     }
 
     /*
-     * Accept only Latin Characters
+     * Accept only Latin Characters and ' '
      */
     @Test
     public void onlyLatinEmpty() {
@@ -51,7 +51,7 @@ public class LatinTest {
     }
 
     /*
-     * Accept only Latin Characters
+     * Accept only Latin Characters and ' '
      */
     @Test
     public void onlyLatin() {
@@ -59,7 +59,7 @@ public class LatinTest {
         System.out.println("onlyLatin");
 
         TestLatinBean testBean = new TestLatinBean();
-        testBean.setLatinString("ABCabcåäöÅÄÖüÜ \t\n\r");
+        testBean.setLatinString("ABCabcåäöÅÄÖüÜ ");
 
         Set<ConstraintViolation<TestLatinBean>> violations = validator.validate(testBean);
 
@@ -69,15 +69,15 @@ public class LatinTest {
     }
 
     /*
-     * Accept only Latin Characters
+     * Accept only Latin Characters and ' '
      */
     @Test
-    public void onlyLatinFail() {
+    public void onlyLatin1Fail() {
 
-        System.out.println("onlyLatinFail");
+        System.out.println("onlyLatin1Fail");
 
         TestLatinBean testBean = new TestLatinBean();
-        testBean.setLatinString("ABCabcåäöÅÄÖüÜ \t\n\r\u0626");  // Arabic character
+        testBean.setLatinString("ABCabcåäöÅÄÖüÜ \n");  // Arabic character
 
         Set<ConstraintViolation<TestLatinBean>> violations = validator.validate(testBean);
 
@@ -87,7 +87,25 @@ public class LatinTest {
     }
 
     /*
-      * Accept only Latin Characters
+     * Accept only Latin Characters and ' '
+     */
+    @Test
+    public void onlyLatin2Fail() {
+
+        System.out.println("onlyLatin2Fail");
+
+        TestLatinBean testBean = new TestLatinBean();
+        testBean.setLatinString("ABCabcåäöÅÄÖüÜ 0626");  // Arabic character
+
+        Set<ConstraintViolation<TestLatinBean>> violations = validator.validate(testBean);
+
+        System.out.println(violations.toString());
+
+        Assert.assertFalse(violations.isEmpty());
+    }
+
+    /*
+      * Accept only Latin Characters and ' '
      */
     @Test
     public void onlyLatinJavaScriptFail() {
@@ -105,7 +123,7 @@ public class LatinTest {
     }
 
     /*
-     * Accept only Latin Characters
+     * Accept only Latin Characters and ' '
      */
     @Test
     public void onlyLatinSQLFail() {

@@ -8,19 +8,19 @@ package se.peter.ivarsson.whitelist.check;
 import java.util.regex.Pattern;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import se.peter.ivarsson.whitelist.validation.Latin;
+import se.peter.ivarsson.whitelist.validation.LatinWhitespace;
 
 /**
- * Check string only has Latin characters and ' '
+ * Check string only has Latin characters and whitespace
  *
  * @author Peter Ivarsson Peter.Ivarsson@cybercom.com
  */
-public class CheckLatinValidator implements ConstraintValidator<Latin, String> {
+public class CheckLatinWhitespaceValidator implements ConstraintValidator<LatinWhitespace, String> {
 
-    private static final Pattern ONLY_LATIN_CHARACTERS_AND_SPACE = Pattern.compile("[\\p{IsLatin} ]*");  // Allow Latin characters and whitespace
+    private static final Pattern ONLY_LATIN_CHARACTERS_AND_WHITESPACE = Pattern.compile("[\\p{IsLatin}\\s]*");  // Allow Latin characters and whitespace
 
     @Override
-    public void initialize(Latin constraintAnnotation) {
+    public void initialize(LatinWhitespace constraintAnnotation) {
 
     }
 
@@ -32,6 +32,6 @@ public class CheckLatinValidator implements ConstraintValidator<Latin, String> {
             return false;
         }
 
-        return ONLY_LATIN_CHARACTERS_AND_SPACE.matcher(value).matches();
+        return ONLY_LATIN_CHARACTERS_AND_WHITESPACE.matcher(value).matches();
     }
 }

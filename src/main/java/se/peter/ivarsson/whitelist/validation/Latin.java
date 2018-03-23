@@ -15,7 +15,7 @@ import javax.validation.Payload;
 import se.peter.ivarsson.whitelist.check.CheckLatinValidator;
 
 /**
- * Check string only has Latin characters and whitespace
+ * Check string only has Latin characters and ' '
  *
  * @author Peter Ivarsson Peter.Ivarsson@cybercom.com
  */

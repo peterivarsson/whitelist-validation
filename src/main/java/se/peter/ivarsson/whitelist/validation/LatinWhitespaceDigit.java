@@ -12,17 +12,17 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.Target;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import se.peter.ivarsson.whitelist.check.CheckLatinDigitValidator;
+import se.peter.ivarsson.whitelist.check.CheckLatinWhitespaceDigitValidator;
 
 /**
- * Check string only has Latin characters, ' ' and digits
+ * Check string only has Latin characters, whitespace and digits
  *
  * @author Peter Ivarsson Peter.Ivarsson@cybercom.com
  */
 @Target({FIELD, PARAMETER})
 @Retention(RUNTIME)
-@Constraint(validatedBy = CheckLatinDigitValidator.class)
-public @interface LatinDigit {
+@Constraint(validatedBy = CheckLatinWhitespaceDigitValidator.class)
+public @interface LatinWhitespaceDigit {
 
     String message() default "Please enter only Latin charaters, whitespace and digits.";
 

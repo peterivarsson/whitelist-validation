@@ -59,7 +59,7 @@ public class LatinDigitTest {
         System.out.println("onlyLatinDigit");
 
         TestLatinDigitBean testBean = new TestLatinDigitBean();
-        testBean.setLatinDigitString("ABCabcåäöÅÄÖüÜ1234567890 \t\n\r");
+        testBean.setLatinDigitString("ABCabcåäöÅÄÖüÜ1234567890 ");
 
         Set<ConstraintViolation<TestLatinDigitBean>> violations = validator.validate(testBean);
 
@@ -72,12 +72,30 @@ public class LatinDigitTest {
      * Accept only Latin Characters and digits
      */
     @Test
-    public void onlyLatinDigitFail() {
+    public void onlyLatinDigit1Fail() {
 
-        System.out.println("onlyLatinDigitFail");
+        System.out.println("onlyLatinDigit1Fail");
 
         TestLatinDigitBean testBean = new TestLatinDigitBean();
-        testBean.setLatinDigitString("ABCabcåäöÅÄÖüÜ1234567890 \t\n\r\u0626");  // Arabic character
+        testBean.setLatinDigitString("ABCabcåäöÅÄÖüÜ1234567890 \n"); 
+
+        Set<ConstraintViolation<TestLatinDigitBean>> violations = validator.validate(testBean);
+
+        System.out.println(violations.toString());
+
+        Assert.assertFalse(violations.isEmpty());
+    }
+
+    /*
+     * Accept only Latin Characters and digits
+     */
+    @Test
+    public void onlyLatinDigit2Fail() {
+
+        System.out.println("onlyLatinDigit2Fail");
+
+        TestLatinDigitBean testBean = new TestLatinDigitBean();
+        testBean.setLatinDigitString("ABCabcåäöÅÄÖüÜ1234567890 \u0626");  // Arabic character
 
         Set<ConstraintViolation<TestLatinDigitBean>> violations = validator.validate(testBean);
 

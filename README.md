@@ -13,9 +13,15 @@ Check string only has Ascii characters and digits
 Check string is only digits
 
 @Latin
-Check string only has Latin characters and whitespace
+Check string only has Latin characters and space
 
 @LatinDigit
+Check string only has Latin characters, space and digits
+
+@LatinWhitespace
+Check string only has Latin characters and whitespace
+
+@LatinWhitespaceDigit
 Check string only has Latin characters, whitespace and digits
 
 @Unicode
